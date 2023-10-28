@@ -4,7 +4,7 @@ import { ProductController } from './product.controller';
 import { Product } from 'src/typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-@Module({  
+@Module({
   imports: [TypeOrmModule.forFeature([Product])],
   controllers: [ProductController],
   providers: [ProductService],

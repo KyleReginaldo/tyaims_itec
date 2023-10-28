@@ -1,9 +1,8 @@
-import { IsNotEmpty } from "class-validator";
-import { Unique } from "typeorm";
+import { IsNotEmpty } from 'class-validator';
 
-export class CreateCategoryDto{
-    @IsNotEmpty()
-    categoryName: string;
-    @IsNotEmpty()
-    isDeleted: boolean;
+export class CreateCategoryDto {
+  @IsNotEmpty()
+  categoryName: string;
+  @IsNotEmpty()
+  isDeleted: boolean;
 }

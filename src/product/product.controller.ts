@@ -7,14 +7,15 @@ import { Product } from 'src/typeorm';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-
   @Post('create')
-  async createProduct(@Body() createProductDto: CreateProductDto): Promise<Product>{
+  async createProduct(
+    @Body() createProductDto: CreateProductDto,
+  ): Promise<Product> {
     return await this.productService.createProduct(createProductDto);
   }
 
   @Get()
-  async getProducts(): Promise<Product[]>{
+  async getProducts(): Promise<Product[]> {
     return await this.productService.getProducts();
   }
 }

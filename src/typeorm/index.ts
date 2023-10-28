@@ -1,8 +1,8 @@
-import { Category } from "./category";
-import { Product } from "./product";
-import { User } from "./user";
+import { Category } from './category';
+import { Product } from './product';
+import { User } from './user';
 
-export {User,Category,Product}
+export { User, Category, Product };
 
-const entities = [User,Category,Product]; 
+const entities = [User, Category, Product];
 export default entities;
