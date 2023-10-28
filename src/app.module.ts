@@ -18,6 +18,7 @@ import { ProductModule } from './product/product.module';
       database: 'testuser',
       synchronize: true,
       entities: entities,
+      migrationsRun: true,
     }),
     AuthenticationModule,
     CategoryModule,
