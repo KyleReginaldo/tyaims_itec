@@ -17,7 +17,7 @@ export class CategoryService {
   ): Promise<Category> {
     const newCategory = this.categoryRepository.create(createCategoryDto);
     return this.categoryRepository.save(newCategory).catch((error) => {
-      console.log(error.errno);
+      console.log(error);
       throw new HttpException(
         CodeTranformer.getCodeMessages(error.errno),
         HttpStatus.BAD_REQUEST,

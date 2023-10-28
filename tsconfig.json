@@ -19,3 +19,5 @@
     "noFallthroughCasesInSwitch": false
   }
 }
+    // "start:prod": "node dist/main.js",
+
