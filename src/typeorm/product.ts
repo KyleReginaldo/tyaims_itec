@@ -11,17 +11,17 @@ import { Category } from './category';
 export class Product {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'product_id' })
   id: number;
-  @Column({ type: 'varchar', name: 'product_name' })
+  @Column({ type: 'varchar', name: 'product_name', nullable: true })
   productName: string;
-  @Column({ type: 'varchar', name: 'product_description' })
+  @Column({ type: 'varchar', name: 'product_description', nullable: true })
   productDescription: string;
-  @Column({ type: 'bigint', name: 'quantity' })
+  @Column({ type: 'bigint', name: 'quantity', nullable: true })
   quantity: number;
-  @Column({ type: 'varchar', name: 'size' })
+  @Column({ type: 'varchar', name: 'size', nullable: true })
   size: string;
-  @Column({ type: 'varchar', name: 'expiration_date' })
+  @Column({ type: 'varchar', name: 'expiration_date', nullable: true })
   expirationDate: string;
-  @Column({ type: 'bigint', name: 'price' })
+  @Column({ type: 'bigint', name: 'price', nullable: true })
   price: number;
   @OneToOne(() => Category, (category) => category.id)
   @JoinColumn({ name: 'category_id' })

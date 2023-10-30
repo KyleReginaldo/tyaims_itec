@@ -17,10 +17,7 @@ export class ProductService {
   }
 
   async getProducts(): Promise<Product[]> {
-    return await this.productRepository
-      .createQueryBuilder('product')
-      .leftJoinAndSelect('product.category', 'category')
-      .getMany();
+    return await this.productRepository.find({ relations: ['category'] });
   }
   async findProductById(id: number): Promise<Product> {
     return await this.productRepository
