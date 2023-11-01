@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Category } from './category';
@@ -23,7 +23,7 @@ export class Product {
   expirationDate: string;
   @Column({ type: 'bigint', name: 'price', nullable: true })
   price: number;
-  @OneToOne(() => Category, (category) => category.id)
+  @ManyToOne(() => Category, (category) => category.id)
   @JoinColumn({ name: 'category_id' })
   category: Category;
 }
