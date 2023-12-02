@@ -23,7 +23,7 @@ export class Product {
   expirationDate: string;
   @Column({ type: 'bigint', name: 'price', nullable: true })
   price: number;
-  @ManyToOne(() => Category, (category) => category.id)
+  @ManyToOne(() => Category, (category) => category.product)
   @JoinColumn({ name: 'category_id' })
   category: Category;
 }

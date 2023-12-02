@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProductDto } from 'src/dto/create.product.dto';
+import { UpdateProductDto } from 'src/dto/update.product.dto';
 import { Product } from 'src/typeorm';
 import { Repository } from 'typeorm';
 
@@ -24,5 +25,32 @@ export class ProductService {
       .createQueryBuilder('product')
       .where('product.id= :productId', { productId: id })
       .getOne();
+  }
+  async deleteProductById(id: string): Promise<any> {
+    const data = await this.productRepository
+      .createQueryBuilder('users')
+      .delete()
+      .from(Product)
+      .where('id = :id', { id: id })
+      .execute();
+    console.log('delete data: ${data}');
+    return data;
+  }
+
+  async updateProductById(
+    id: number,
+    updateProductDto: UpdateProductDto,
+  ): Promise<Product> {
+    // const product = await this.productRepository.findOneOrFail({
+    //   where: { id: id },
+    // });
+    // if (!product.id) {
+    //   // tslint:disable-next-line:no-console
+    //   console.error("Todo doesn't exist");
+    // }
+    await this.productRepository.update(id, updateProductDto);
+    return await this.productRepository.findOne({
+      where: { id: id },
+    });
   }
 }
