@@ -4,6 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  Timestamp,
 } from 'typeorm';
 import { Category } from './category';
 
@@ -19,8 +20,10 @@ export class Product {
   quantity: number;
   @Column({ type: 'varchar', name: 'size', nullable: true })
   size: string;
-  @Column({ type: 'varchar', name: 'expiration_date', nullable: true })
-  expirationDate: string;
+  @Column({ type: 'timestamp', name: 'expiration_date', nullable: true })
+  expirationDate: Timestamp;
+  @Column({ type: 'timestamp', name: 'created_at' })
+  createdAt: Timestamp;
   @Column({ type: 'bigint', name: 'price', nullable: true })
   price: number;
   @ManyToOne(() => Category, (category) => category.product)

@@ -4,8 +4,12 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class User {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'user_id' })
   id: number;
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   username: string;
   @Column({ nullable: false })
   password: string;
+  @Column({ nullable: false })
+  name: string;
+  @Column({ nullable: false, name: 'user_role' })
+  userRole: number;
 }

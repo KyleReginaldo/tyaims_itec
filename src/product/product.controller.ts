@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from 'src/dto/create.product.dto';
@@ -19,7 +20,7 @@ export class ProductController {
 
   @Post('create')
   async createProduct(
-    @Body() createProductDto: CreateProductDto,
+    @Body() createProductDto: CreateProductDto
   ): Promise<Product> {
     return await this.productService.createProduct(createProductDto);
   }
@@ -30,14 +31,27 @@ export class ProductController {
   }
 
   @Delete('delete/:id')
-  async deleteProductById(@Param('id') id: string): Promise<any> {
-    return await this.productService.deleteProductById(id);
+  async deleteProduct(@Param('id', ParseIntPipe) id: number): Promise<any> {
+    return await this.productService.deleteProduct(id);
   }
   @Put('update/:id')
-  async updateProductById(
+  async updateProduct(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateProductDto: UpdateProductDto,
+    @Body() updateProductDto: UpdateProductDto
   ): Promise<Product> {
-    return await this.productService.updateProductById(id, updateProductDto);
+    return await this.productService.updateProduct(id, updateProductDto);
+  }
+  @Get(':id')
+  async fetchProductById(
+    @Param('id', ParseIntPipe) id: number
+  ): Promise<Product> {
+    return this.productService.fetchProductById(id);
+  }
+
+  @Get('/search')
+  async searchProduct(
+    @Query('productName') productName: string
+  ): Promise<Product[]> {
+    return await this.productService.searchProduct(productName);
   }
 }
