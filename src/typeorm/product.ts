@@ -20,6 +20,8 @@ export class Product {
   quantity: number;
   @Column({ type: 'varchar', name: 'size', nullable: true })
   size: string;
+  @Column({ type: 'varchar', name: 'brand', nullable: true })
+  brand: string;
   @Column({ type: 'timestamp', name: 'expiration_date', nullable: true })
   expirationDate: Timestamp;
   @Column({ type: 'timestamp', name: 'created_at' })

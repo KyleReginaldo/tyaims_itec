@@ -8,4 +8,5 @@ export class UpdateProductDto {
   expirationDate: string;
   price: number;
   category: Category;
+  brand: string;
 }
